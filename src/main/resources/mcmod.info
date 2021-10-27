@@ -3,14 +3,14 @@
     "modid": "agalarclient",
     "name": "AgalarClient",
     "description": "Agalar Client STRONG",
-    "version": "1.0.4 T2",
+    "version": "3.1.0",
     "mcversion": "1.12.2",
     "logoFile": "assets/minecraft/textures/phobos.png",
     "url": "https://discord.gg/TzX9M5FHTS",
     "updateUrl": "",
     "authorList": [
-      "MrHakan",
-      "CrawLeyYou"
+      "Lokumisadog",
+      "GL_DONT_CARE"
     ],
     "screenshots": [],
     "dependencies": []

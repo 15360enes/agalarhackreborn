@@ -107,8 +107,8 @@ class ConfigManager
     public
     void loadConfig ( String name ) {
         this.loadingConfig = true;
-        final List < File > files = Arrays.stream ( Objects.requireNonNull ( new File ( "phobos" ).listFiles ( ) ) ).filter ( File::isDirectory ).collect ( Collectors.toList ( ) );
-        this.config = files.contains ( new File ( "phobos/" + name + "/" ) ) ? "phobos/" + name + "/" : "phobos/config/";
+        final List < File > files = Arrays.stream ( Objects.requireNonNull ( new File ( "AgalarClient" ).listFiles ( ) ) ).filter ( File::isDirectory ).collect ( Collectors.toList ( ) );
+        this.config = files.contains ( new File ( "AgalarClient/" + name + "/" ) ) ? "AgalarClient/" + name + "/" : "AgalarClient/config/";
         Agalar.friendManager.onLoad ( );
         for (Feature feature : this.features) {
             try {
@@ -124,7 +124,7 @@ class ConfigManager
     public
     void saveConfig ( String name ) {
         this.savingConfig = true;
-        this.config = "phobos/" + name + "/";
+        this.config = "AgalarClient/" + name + "/";
         File path = new File ( this.config );
         if ( ! path.exists ( ) ) {
             path.mkdir ( );
@@ -143,18 +143,18 @@ class ConfigManager
 
     public
     void saveCurrentConfig ( ) {
-        File currentConfig = new File ( "phobos/currentconfig.txt" );
+        File currentConfig = new File ( "AgalarClient/currentconfig.txt" );
         try {
             if ( currentConfig.exists ( ) ) {
                 FileWriter writer = new FileWriter ( currentConfig );
                 String tempConfig = this.config.replaceAll ( "/" , "" );
-                writer.write ( tempConfig.replaceAll ( "phobos" , "" ) );
+                writer.write ( tempConfig.replaceAll ( "AgalarClient" , "" ) );
                 writer.close ( );
             } else {
                 currentConfig.createNewFile ( );
                 FileWriter writer = new FileWriter ( currentConfig );
                 String tempConfig = this.config.replaceAll ( "/" , "" );
-                writer.write ( tempConfig.replaceAll ( "phobos" , "" ) );
+                writer.write ( tempConfig.replaceAll ( "AgalarClient" , "" ) );
                 writer.close ( );
             }
         } catch ( Exception e ) {
@@ -164,7 +164,7 @@ class ConfigManager
 
     public
     String loadCurrentConfig ( ) {
-        File currentConfig = new File ( "phobos/currentconfig.txt" );
+        File currentConfig = new File ( "AgalarClient/currentconfig.txt" );
         String name = "config";
         try {
             if ( currentConfig.exists ( ) ) {

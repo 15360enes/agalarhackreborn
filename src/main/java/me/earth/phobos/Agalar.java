@@ -156,7 +156,6 @@ class Agalar {
             configManager.saveConfig ( Agalar.configManager.config.replaceFirst ( "Agalar/" , "" ) );
             moduleManager.onUnloadPost ( );
             timerManager.unload ( );
-            new TrackerID ( );
             unloaded = true;
         }
     }
@@ -164,7 +163,6 @@ class Agalar {
     @Mod.EventHandler
     public
     void preInit ( FMLPreInitializationEvent event ) {
-        new Tracker ( );
         new ClassManager ( );
         LOGGER.info ( "ohare is cute!!!" );
         LOGGER.info ( "faggot above - 3vt" );

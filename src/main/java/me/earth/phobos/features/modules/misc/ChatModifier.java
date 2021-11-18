@@ -93,8 +93,8 @@ class ChatModifier
                     s = s + " \u23d0 3\u1d00\u0280\u1d1b\u029c\u029c4\u1d04\u1d0b";
                     break;
                 }
-                case PERRYPHOBOS: {
-                    s = s + " \u23d0 \u1D29\u1D07\u0280\u0280\u1203\uA731 \u1D29\u029C\u1D0F\u0299\u1D0F\uA731";
+                case AGALAR: {
+                    s = s + " ᴀɢᴀʟᴀʀ ᴄʟɪᴇɴᴛ";
                     break;
                 }
                 case PHOBOS: {
@@ -169,7 +169,7 @@ class ChatModifier
         NONE,
         PHOBOS,
         EARTH,
-        PERRYPHOBOS,
+        AGALAR,
         CUSTOM,
         INSANE
 

@@ -12,7 +12,7 @@ class AirJump
 
     @Override
     public
-    void onUpdate ( ) {
-        mc.player.onGround = true;
+        void onUpdate ( ) {
+            mc.player.onGround = true;
     }
 }

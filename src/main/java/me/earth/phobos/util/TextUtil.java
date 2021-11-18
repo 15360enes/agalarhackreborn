@@ -22,6 +22,7 @@ class TextUtil {
     public static final String LIGHT_PURPLE = "\u00a7d";
     public static final String YELLOW = "\u00a7e";
     public static final String WHITE = "\u00a7f";
+    public static final String ITALIC_GOLD =  "\u00a76" + "\u00a7o";
     public static final String OBFUSCATED = "\u00a7k";
     public static final String BOLD = "\u00a7l";
     public static final String STRIKE = "\u00a7m";
@@ -117,6 +118,11 @@ class TextUtil {
                 coloredString = YELLOW + coloredString + RESET;
                 break;
             }
+            case ITALIC_GOLD: {
+                coloredString = ITALIC_GOLD + coloredString + RESET;
+                break;
+            }
+
         }
         return coloredString;
     }
@@ -148,6 +154,7 @@ class TextUtil {
         AQUA,
         RED,
         LIGHT_PURPLE,
+        ITALIC_GOLD,
         YELLOW
 
     }

@@ -8,13 +8,13 @@ public
 class RPC
         extends Module {
     public static RPC INSTANCE;
-    public Setting < Boolean > catMode = this.register ( new Setting <> ( "CatMode" , false ) );
+    public Setting < Boolean > lokummode = this.register ( new Setting <> ( "LokumMode" , false ) );
     public Setting < Boolean > showIP = this.register ( new Setting <> ( "ShowIP" , Boolean.TRUE , "Shows the server IP in your discord presence." ) );
     public Setting < String > state = this.register ( new Setting <> ( "State" , "AgalarClient 3.1.0" , "Sets the state of the DiscordRPC." ) );
 
     public
     RPC ( ) {
-        super ( "RPC" , "Discord rich presence" , Module.Category.MISC , false , false , false );
+        super ( "RPC" , "Discord zengin var olus" , Module.Category.MISC , true , false , true );
         INSTANCE = this;
     }
 
@@ -27,7 +27,7 @@ class RPC
     @Override
     public
     void onDisable ( ) {
-        DiscordPresence.stop ( );
+        DiscordPresence.start();
     }
 }
 

@@ -80,7 +80,7 @@ class ClickGui
     void onEnable ( ) {
         mc.displayGuiScreen ( new PhobosGui ( ) );
         if ( this.blurEffect.getValue ( ) ) {
-            ClickGui.mc.entityRenderer.loadShader ( new ResourceLocation ( "shaders/post/blur.json" ) );
+            ClickGui.mc.entityRenderer.loadShader ( new ResourceLocation ( "shader/post/blur.json" ) );
         }
     }
 

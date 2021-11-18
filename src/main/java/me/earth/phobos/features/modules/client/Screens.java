@@ -14,10 +14,10 @@ class Screens
         super ( "Screens" , "Controls custom screens used by the client" , Module.Category.CLIENT , true , false , false );
         INSTANCE = this;
     }
-
     @Override
     public
     void onTick ( ) {
+
     }
 }
 

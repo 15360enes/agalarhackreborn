@@ -76,7 +76,14 @@ class BlockUtil
         }
         return facings;
     }
-
+    public static void placeCrystalOnBlock(BlockPos pos, EnumHand hand, boolean swing, boolean exactHand) {
+        RayTraceResult result = BlockUtil.mc.world.rayTraceBlocks(new Vec3d(BlockUtil.mc.player.posX, BlockUtil.mc.player.posY + (double) BlockUtil.mc.player.getEyeHeight(), BlockUtil.mc.player.posZ), new Vec3d((double) pos.getX() + 0.5, (double) pos.getY() - 0.5, (double) pos.getZ() + 0.5));
+        EnumFacing facing = result == null || result.sideHit == null ? EnumFacing.UP : result.sideHit;
+        BlockUtil.mc.player.connection.sendPacket(new CPacketPlayerTryUseItemOnBlock(pos, facing, hand, 0.0f, 0.0f, 0.0f));
+        if (swing) {
+            BlockUtil.mc.player.connection.sendPacket(new CPacketAnimation(exactHand ? hand : EnumHand.MAIN_HAND));
+        }
+    }
     public static
     EnumFacing getFirstFacing ( BlockPos pos ) {
         Iterator < EnumFacing > iterator = BlockUtil.getPossibleSides ( pos ).iterator ( );

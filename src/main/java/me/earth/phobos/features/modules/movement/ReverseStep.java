@@ -9,7 +9,7 @@ import java.util.Objects;
 public
 class ReverseStep
         extends Module {
-    private final Setting < Mode > mode = this.register ( new Setting <> ( "Mode" , Mode.PPHOBOS ) );
+    private final Setting < Mode > mode = this.register ( new Setting <> ( "Mode" , Mode.PHOBOS ) );
     int delay;
 
     public
@@ -30,7 +30,7 @@ class ReverseStep
             }
         }
         if ( fullNullCheck ( ) ) return;
-        if ( this.mode.getValue ( ) == Mode.PPHOBOS ) {
+        if ( this.mode.getValue ( ) == Mode.PHOBOS ) {
             if ( mc.player != null && mc.world != null && mc.player.onGround && ! mc.player.isSneaking ( ) && ! mc.player.isInWater ( ) && ! mc.player.isDead && ! mc.player.isInLava ( ) && ! mc.player.isOnLadder ( ) && ! mc.player.noClip && ! mc.gameSettings.keyBindSneak.isKeyDown ( ) && ! mc.gameSettings.keyBindJump.isKeyDown ( ) && ! Agalar.moduleManager.isModuleEnabled ( "Strafe" ) ) {
                 if ( Objects.requireNonNull ( ReverseStep.mc.player ).onGround ) {
                     ReverseStep.mc.player.motionY -= 1.0;
@@ -41,7 +41,7 @@ class ReverseStep
 
     private
     enum Mode {
-        PPHOBOS,
+        PHOBOS,
         REWRITE
 
     }

@@ -303,4 +303,8 @@ class Setting< T > {
         }
         return ! this.visibility.test ( this.getValue ( ) );
     }
+
+    public Object getEnum() {
+        return null;
+    }
 }

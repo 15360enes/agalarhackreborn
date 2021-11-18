@@ -1,7 +1,6 @@
 package me.earth.phobos.util;
 
 import me.earth.phobos.features.modules.render.PopChams;
-import me.earth.phobos.util.NordTessellator;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityOtherPlayerMP;
 import net.minecraft.client.model.ModelBase;
@@ -40,8 +39,8 @@ public class PopChamsUtil {
             return;
         }
         GL11.glLineWidth(1.0f);
-        Color lineColorS = new Color(PopChams.rL.getValue(), PopChams.bL.getValue(), PopChams.gL.getValue(), PopChams.aL.getValue());
-        Color fillColorS = new Color(PopChams.rF.getValue(), PopChams.bF.getValue(), PopChams.gF.getValue(),PopChams. aF.getValue());
+        Color lineColorS = new Color(PopChams.RED_LINE.getValue(), PopChams.BLUE_LINE.getValue(), PopChams.GREEN_LINE.getValue(), PopChams.ALPHA_LINE.getValue());
+        Color fillColorS = new Color(PopChams.RED_FILL.getValue(), PopChams.BLUE_FILL.getValue(), PopChams.GREEN_FILL.getValue(),PopChams.ALPHA_FILL.getValue());
         int lineA = lineColorS.getAlpha();
         int fillA = (fillColorS).getAlpha();
         final long time = System.currentTimeMillis() - this.startTime - ((Number)PopChams.fadestart.getValue()).longValue();

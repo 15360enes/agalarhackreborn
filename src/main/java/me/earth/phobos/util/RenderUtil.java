@@ -41,6 +41,7 @@ import java.util.Objects;
 public
 class RenderUtil
         implements Util {
+    public static int deltaTime;
     private static final Frustum frustrum = new Frustum ( );
     private static final FloatBuffer screenCoords = BufferUtils.createFloatBuffer ( 3 );
     private static final IntBuffer viewport = BufferUtils.createIntBuffer ( 16 );

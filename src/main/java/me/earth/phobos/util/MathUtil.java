@@ -1,6 +1,7 @@
 package me.earth.phobos.util;
 
 import com.mojang.realmsclient.gui.ChatFormatting;
+import javafx.beans.binding.Bindings;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
@@ -363,6 +364,13 @@ class MathUtil
             return "to your right";
         }
         return ( ChatFormatting.OBFUSCATED + "living in your walls" );
+    }
+
+    public static Vec3d getInterpolatedRenderPos(final Entity entity, final float ticks) {
+        return interpolateEntity(entity, ticks).subtract(Minecraft.getMinecraft().getRenderManager().renderPosX, Minecraft.getMinecraft().getRenderManager().renderPosY, Minecraft.getMinecraft().getRenderManager().renderPosZ);
+    }
+    public static Vec3d interpolateEntity(final Entity entity, final float time) {
+        return new Vec3d(entity.lastTickPosX + (entity.posX - entity.lastTickPosX) * time, entity.lastTickPosY + (entity.posY - entity.lastTickPosY) * time, entity.lastTickPosZ + (entity.posZ - entity.lastTickPosZ) * time);
     }
 }
 

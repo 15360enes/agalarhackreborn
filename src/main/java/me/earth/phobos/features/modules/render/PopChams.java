@@ -3,7 +3,9 @@ package me.earth.phobos.features.modules.render;
 import com.mojang.authlib.GameProfile;
 import me.earth.phobos.event.events.PacketEvent;
 import me.earth.phobos.features.modules.Module;
+import me.earth.phobos.features.modules.client.Colors;
 import me.earth.phobos.features.setting.Setting;
+import me.earth.phobos.util.EntityUtil;
 import me.earth.phobos.util.NordTessellator;
 import me.earth.phobos.util.PopChamsUtil;
 import net.minecraft.client.entity.EntityOtherPlayerMP;
@@ -11,30 +13,31 @@ import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelPlayer;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.item.EntityEnderCrystal;
 import net.minecraft.network.play.server.SPacketEntityStatus;
 import net.minecraft.util.math.MathHelper;
 import net.minecraftforge.client.event.RenderWorldLastEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import org.lwjgl.opengl.GL11;
-
+import java.awt.color.*;
 import java.awt.*;
 
 public class PopChams extends Module {
     public static final Setting<Boolean> self = new Setting<Boolean>("Self", false);
-    public static final Setting<Integer> rL = new Setting<Integer>("RedLine", 255, 0, 255);
-    public static final Setting<Integer> gL = new Setting<Integer>("GreenLine", 26, 0, 255);
-    public static final Setting<Integer> bL = new Setting<Integer>("BlueLine", 42, 0, 255);
-    public static final Setting<Integer> aL = new Setting<Integer>("AlphaLine", 42, 0, 255);
+    public static final Setting<Integer> RED_LINE = new Setting<Integer>("RedLine", 255, 0, 255);
+    public static final Setting<Integer> GREEN_LINE = new Setting<Integer>("GreenLine", 26, 0, 255);
+    public static final Setting<Integer> BLUE_LINE = new Setting<Integer>("BlueLine", 42, 0, 255);
+    public static final Setting<Integer> ALPHA_LINE = new Setting<Integer>("AlphaLine", 42, 0, 255);
 
-    public static final Setting<Integer> rF = new Setting<Integer>("RedFill", 255, 0, 255);
-    public static final Setting<Integer> gF = new Setting<Integer>("GreenFill", 26, 0, 255);
-    public static final Setting<Integer> bF = new Setting<Integer>("BlueFill", 42, 0, 255);
-    public static final Setting<Integer> aF = new Setting<Integer>("AlphaFill", 42, 0, 255);
+    public static final Setting<Integer> RED_FILL = new Setting<Integer>("RedFill", 255, 0, 255);
+    public static final Setting<Integer> GREEN_FILL = new Setting<Integer>("GreenFill", 26, 0, 255);
+    public static final Setting<Integer> BLUE_FILL = new Setting<Integer>("BlueFill", 42, 0, 255);
+    public static final Setting<Integer> ALPHA_FILL = new Setting<Integer>("AlphaFill", 42, 0, 255);
 
     public static final Setting<Integer> fadestart = new Setting<Integer>("FadeStart", 200, 0, 5000);
     public static final Setting<Double> fadetime = new Setting<Double>("FadeTime", .5, .0,2d);
     public static final Setting<Boolean> onlyOneEsp = new Setting<Boolean>("OnlyOneEsp", true);
-    public static final Setting<Boolean> rainbow = new Setting<Boolean>("Rainbow", false);
+    public static final Setting<Boolean> colorsync = new Setting<Boolean>("Csync", false);
 
     EntityOtherPlayerMP player;
     ModelPlayer playerModel;
@@ -45,18 +48,18 @@ public class PopChams extends Module {
     public PopChams() {
         super("PopChams", "Renders when some1 pops", Category.RENDER, true, false, false);
         register(self);
-        register(rL);
-        register(gL);
-        register(bL);
-        register(aL);
-        register(rF);
-        register(gF);
-        register(bF);
-        register(aF);
+        register(RED_LINE);
+        register(GREEN_LINE);
+        register(BLUE_LINE);
+        register(ALPHA_LINE);
+        register(RED_FILL);
+        register(GREEN_FILL);
+        register(BLUE_FILL);
+        register(ALPHA_FILL);
         register(fadestart);
         register(fadetime);
         register(onlyOneEsp);
-        register(rainbow);
+        register(colorsync);
     }
 
     @SubscribeEvent
@@ -75,8 +78,8 @@ public class PopChams extends Module {
                 playerModel.bipedRightArmwear.showModel = false;
                 playerModel.bipedRightLegwear.showModel = false;
 
-                alphaFill = aF.getValue();
-                alphaLine = aL.getValue();
+                alphaFill = ALPHA_FILL.getValue();
+                alphaLine = ALPHA_LINE.getValue();
                 if (!onlyOneEsp.getValue()) {
                     PopChamsUtil p = new PopChamsUtil(player, playerModel, startTime, alphaFill, alphaLine);
                 }
@@ -92,8 +95,8 @@ public class PopChams extends Module {
                 return;
             }
             GL11.glLineWidth(1.0f);
-            Color lineColorS = new Color(rL.getValue(), bL.getValue(), gL.getValue(), aL.getValue());
-            Color fillColorS = new Color(rF.getValue(), bF.getValue(), gF.getValue(), aF.getValue());
+            Color lineColorS = new Color(RED_LINE.getValue(), BLUE_LINE.getValue(), GREEN_LINE.getValue(), ALPHA_LINE.getValue());
+            Color fillColorS = new Color(RED_FILL.getValue(), BLUE_FILL.getValue(), GREEN_FILL.getValue(), ALPHA_FILL.getValue());
             int lineA = lineColorS.getAlpha();
             int fillA = (fillColorS).getAlpha();
             final long time = System.currentTimeMillis() - this.startTime - ((Number) fadestart.getValue()).longValue();
@@ -125,7 +128,9 @@ public class PopChams extends Module {
                 GL11.glPolygonMode(1032, 6914);
                 GL11.glPopAttrib();
                 NordTessellator.releaseGL();
+
             }
+
         }
     }
 
@@ -178,6 +183,7 @@ public class PopChams extends Module {
         GlStateManager.translate(0.0f, -1.501f, 0.0f);
         return f;
     }
+
 
     public static void prepareRotations(final EntityLivingBase entityLivingBase) {
         GlStateManager.rotate(180.0f - entityLivingBase.rotationYaw, 0.0f, 1.0f, 0.0f);

@@ -18,6 +18,7 @@
     "MixinEntityBoat",
     "MixinEntityLivingBase",
     "MixinEntityPlayer",
+    "MixinEntityRenderer",
     "MixinEntityPlayerSP",
     "MixinEntityRenderer",
     "MixinFontRenderer",

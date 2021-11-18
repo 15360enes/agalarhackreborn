@@ -25,7 +25,7 @@ class Shaders extends Module {
                 mc.entityRenderer.getShaderGroup ( ).deleteShaderGroup ( );
             }
             try {
-                mc.entityRenderer.loadShader ( new ResourceLocation ( "shaders/post/" + shader.getValue ( ) + ".json" ) );
+                mc.entityRenderer.loadShader ( new ResourceLocation ( "shader/post/" + shader.getValue ( ) + ".json" ) );
             } catch ( Exception e ) {
                 e.printStackTrace ( );
             }

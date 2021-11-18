@@ -16,11 +16,11 @@ import me.earth.phobos.features.modules.render.*;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.eventhandler.EventBus;
 import org.lwjgl.input.Keyboard;
-
 import java.awt.*;
 import java.util.List;
 import java.util.*;
 import java.util.stream.Collectors;
+import java.util.Collection;
 
 public
 class ModuleManager
@@ -171,7 +171,6 @@ class ModuleManager
         this.modules.add ( new me.earth.phobos.features.modules.render.Cosmetics ( ) );
         this.modules.add ( new Trails ( ) );
         this.modules.add ( new Nametags ( ) );
-        this.modules.add ( new TestNametags ( ) );
         this.modules.add ( new Aspect ( ) );
         this.modules.add ( new Anchor ( ) );
         this.modules.add ( new Shaders ( ) );
@@ -199,7 +198,6 @@ class ModuleManager
         this.modules.add ( new ItemPhysics ( ) );
         this.modules.add ( new PenisESP ( ) );
         this.modules.add ( new ChorusESP ( ) );
-        //this.modules.add ( new PacketWalk ( ) ); not done
         this.modules.add ( new AntiAFK ( ) );
         this.modules.add ( new AutoBuilder ( ) );
         this.moduleColorMap.put ( this.getModuleByClass ( AntiTrap.class ) , new Color ( 128 , 53 , 69 ) );
@@ -323,7 +321,6 @@ class ModuleManager
         this.moduleColorMap.put ( this.getModuleByClass ( Screens.class ) , new Color ( 165 , 89 , 101 ) );
         this.moduleColorMap.put ( this.getModuleByClass ( StreamerMode.class ) , new Color ( 0 , 0 , 0 ) );
         this.moduleColorMap.put ( this.getModuleByClass (PopChams.class) , new Color ( 0 , 0 , 0 ) );
-
         for (Module module : this.modules) {
             module.animation.start ( );
         }
@@ -508,4 +505,3 @@ class ModuleManager
         return animationModules;
     }
 }
-

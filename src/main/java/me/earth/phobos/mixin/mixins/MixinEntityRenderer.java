@@ -1,6 +1,7 @@
 package me.earth.phobos.mixin.mixins;
 
 import com.google.common.base.Predicate;
+import me.earth.phobos.mixin.mixins.accessors.AccessorEntityRenderer;
 import me.earth.phobos.event.events.PerspectiveEvent;
 import me.earth.phobos.features.modules.client.Notifications;
 import me.earth.phobos.features.modules.player.NoEntityTrace;
@@ -23,12 +24,13 @@ import org.lwjgl.util.glu.Project;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
+import org.spongepowered.asm.mixin.gen.Invoker;
+import org.spongepowered.asm.mixin.gen.Accessor;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.ModifyVariable;
 import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
-
 import javax.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.List;
@@ -94,7 +96,7 @@ class MixinEntityRenderer {
     }
 
     @Redirect(method = {"setupCameraTransform"}, at = @At(value = "INVOKE", target = "Lorg/lwjgl/util/glu/Project;gluPerspective(FFFF)V"))
-    private
+    public
     void onSetupCameraTransform ( float f , float f2 , float f3 , float f4 ) {
         PerspectiveEvent perspectiveEvent = new PerspectiveEvent ( (float) mc.displayWidth / (float) mc.displayHeight );
         MinecraftForge.EVENT_BUS.post ( perspectiveEvent );
@@ -163,4 +165,5 @@ class MixinEntityRenderer {
         return CameraClip.getInstance ( ).isEnabled ( ) && CameraClip.getInstance ( ).extend.getValue ( ) ? CameraClip.getInstance ( ).distance.getValue ( ) : ( CameraClip.getInstance ( ).isEnabled ( ) && ! CameraClip.getInstance ( ).extend.getValue ( ) ? 4.0 : range );
     }
 }
+
 

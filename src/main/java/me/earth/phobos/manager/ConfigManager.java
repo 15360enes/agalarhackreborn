@@ -22,7 +22,7 @@ public
 class ConfigManager
         implements Util {
     public ArrayList < Feature > features = new ArrayList <> ( );
-    public String config = "AgalarClient/config/";
+    public String config = "phobos/config/";
     public boolean loadingConfig;
     public boolean savingConfig;
 
@@ -99,7 +99,7 @@ class ConfigManager
             }
             if ( ! ( feature instanceof AntiDDoS ) ) continue;
             AntiDDoS antiDDoS = (AntiDDoS) feature;
-            Setting < ? > setting = feature.register ( new Setting <> ( settingName , Boolean.TRUE , v -> antiDDoS.showServer.getValue ( ) && ! antiDDoS.full.getValue ( ) ) );
+            Setting < ? extends Object > setting = feature.register ( new Setting <> ( settingName , Boolean.TRUE , v -> antiDDoS.showServer.getValue ( ) && ! antiDDoS.full.getValue ( ) ) );
             antiDDoS.registerServer ( setting );
         }
     }
@@ -107,8 +107,8 @@ class ConfigManager
     public
     void loadConfig ( String name ) {
         this.loadingConfig = true;
-        final List < File > files = Arrays.stream ( Objects.requireNonNull ( new File ( "AgalarClient" ).listFiles ( ) ) ).filter ( File::isDirectory ).collect ( Collectors.toList ( ) );
-        this.config = files.contains ( new File ( "AgalarClient/" + name + "/" ) ) ? "AgalarClient/" + name + "/" : "AgalarClient/config/";
+        final List < File > files = Arrays.stream ( Objects.requireNonNull ( new File ( "phobos" ).listFiles ( ) ) ).filter ( File::isDirectory ).collect ( Collectors.toList ( ) );
+        this.config = files.contains ( new File ( "phobos/" + name + "/" ) ) ? "phobos/" + name + "/" : "phobos/config/";
         Agalar.friendManager.onLoad ( );
         for (Feature feature : this.features) {
             try {
@@ -124,7 +124,7 @@ class ConfigManager
     public
     void saveConfig ( String name ) {
         this.savingConfig = true;
-        this.config = "AgalarClient/" + name + "/";
+        this.config = "phobos/" + name + "/";
         File path = new File ( this.config );
         if ( ! path.exists ( ) ) {
             path.mkdir ( );
@@ -143,18 +143,18 @@ class ConfigManager
 
     public
     void saveCurrentConfig ( ) {
-        File currentConfig = new File ( "AgalarClient/currentconfig.txt" );
+        File currentConfig = new File ( "phobos/currentconfig.txt" );
         try {
             if ( currentConfig.exists ( ) ) {
                 FileWriter writer = new FileWriter ( currentConfig );
                 String tempConfig = this.config.replaceAll ( "/" , "" );
-                writer.write ( tempConfig.replaceAll ( "AgalarClient" , "" ) );
+                writer.write ( tempConfig.replaceAll ( "phobos" , "" ) );
                 writer.close ( );
             } else {
                 currentConfig.createNewFile ( );
                 FileWriter writer = new FileWriter ( currentConfig );
                 String tempConfig = this.config.replaceAll ( "/" , "" );
-                writer.write ( tempConfig.replaceAll ( "AgalarClient" , "" ) );
+                writer.write ( tempConfig.replaceAll ( "phobos" , "" ) );
                 writer.close ( );
             }
         } catch ( Exception e ) {
@@ -164,7 +164,7 @@ class ConfigManager
 
     public
     String loadCurrentConfig ( ) {
-        File currentConfig = new File ( "AgalarClient/currentconfig.txt" );
+        File currentConfig = new File ( "phobos/currentconfig.txt" );
         String name = "config";
         try {
             if ( currentConfig.exists ( ) ) {
@@ -192,13 +192,14 @@ class ConfigManager
 
     public
     void saveSettings ( Feature feature ) throws IOException {
+        String featureName;
         Path outputFile;
-        new JsonObject ( );
+        JsonObject object = new JsonObject ( );
         File directory = new File ( this.config + this.getDirectory ( feature ) );
         if ( ! directory.exists ( ) ) {
             directory.mkdir ( );
         }
-        if ( ! Files.exists ( outputFile = Paths.get ( this.config + this.getDirectory ( feature ) + feature.getName ( ) + ".json" ) ) ) {
+        if ( ! Files.exists ( outputFile = Paths.get ( featureName = this.config + this.getDirectory ( feature ) + feature.getName ( ) + ".json" ) ) ) {
             Files.createFile ( outputFile );
         }
         Gson gson = new GsonBuilder ( ).setPrettyPrinting ( ).create ( );

@@ -327,32 +327,31 @@ class AutoCrystal
     }
 
     @SubscribeEvent
-    public
-    void onPacketSend ( PacketEvent.Send event ) {
+    public void onPacketSend(PacketEvent.Send event) {
         CPacketUseEntity packet;
-        if ( event.getStage ( ) == 0 && this.rotate.getValue ( ) != Rotate.OFF && this.rotating && this.eventMode.getValue ( ) != 2 && event.getPacket ( ) instanceof CPacketPlayer ) {
-            CPacketPlayer packet2 = event.getPacket ( );
+        if (event.getStage() == 0 && this.rotate.getValue() != Rotate.OFF && this.rotating && this.eventMode.getValue() != 2 && event.getPacket() instanceof CPacketPlayer) {
+            CPacketPlayer packet2 = event.getPacket();
             packet2.yaw = this.yaw;
             packet2.pitch = this.pitch;
-            ++ this.rotationPacketsSpoofed;
-            if ( this.rotationPacketsSpoofed >= this.rotations.getValue ( ) ) {
+            ++this.rotationPacketsSpoofed;
+            if (this.rotationPacketsSpoofed >= this.rotations.getValue()) {
                 this.rotating = false;
                 this.rotationPacketsSpoofed = 0;
             }
         }
         BlockPos pos = null;
-        if ( event.getStage ( ) == 0 && event.getPacket ( ) instanceof CPacketUseEntity && ( packet = event.getPacket ( ) ).getAction ( ) == CPacketUseEntity.Action.ATTACK && packet.getEntityFromWorld ( AutoCrystal.mc.world ) instanceof EntityEnderCrystal ) {
-            pos = Objects.requireNonNull ( packet.getEntityFromWorld ( AutoCrystal.mc.world ) ).getPosition ( );
-            if ( this.removeAfterAttack.getValue ( ) ) {
-                Objects.requireNonNull ( packet.getEntityFromWorld ( AutoCrystal.mc.world ) ).setDead ( );
-                AutoCrystal.mc.world.removeEntityFromWorld ( packet.entityId );
+        if (event.getStage() == 0 && event.getPacket() instanceof CPacketUseEntity && (packet = event.getPacket()).getAction() == CPacketUseEntity.Action.ATTACK && packet.getEntityFromWorld(AutoCrystal.mc.world) instanceof EntityEnderCrystal) {
+            pos = packet.getEntityFromWorld(AutoCrystal.mc.world).getPosition();
+            if (this.removeAfterAttack.getValue().booleanValue()) {
+                Objects.requireNonNull(packet.getEntityFromWorld(AutoCrystal.mc.world)).setDead();
+                AutoCrystal.mc.world.removeEntityFromWorld(packet.entityId);
             }
         }
-        if ( event.getStage ( ) == 0 && event.getPacket ( ) instanceof CPacketUseEntity && ( packet = event.getPacket ( ) ).getAction ( ) == CPacketUseEntity.Action.ATTACK && packet.getEntityFromWorld ( AutoCrystal.mc.world ) instanceof EntityEnderCrystal ) {
-            EntityEnderCrystal crystal = (EntityEnderCrystal) packet.getEntityFromWorld ( AutoCrystal.mc.world );
-            if ( this.antiBlock.getValue ( ) && EntityUtil.isCrystalAtFeet ( crystal , this.range.getValue ( ) ) && pos != null ) {
-                this.rotateToPos ( pos );
-                BlockUtil.placeCrystalOnBlock ( this.placePos , this.offHand ? EnumHand.OFF_HAND : EnumHand.MAIN_HAND , this.placeSwing.getValue ( ) , this.exactHand.getValue ( ) , this.shouldSilent );
+        if (event.getStage() == 0 && event.getPacket() instanceof CPacketUseEntity && (packet = event.getPacket()).getAction() == CPacketUseEntity.Action.ATTACK && packet.getEntityFromWorld(AutoCrystal.mc.world) instanceof EntityEnderCrystal) {
+            EntityEnderCrystal crystal = (EntityEnderCrystal) packet.getEntityFromWorld(AutoCrystal.mc.world);
+            if (this.antiBlock.getValue().booleanValue() && EntityUtil.isCrystalAtFeet(crystal, this.range.getValue().floatValue()) && pos != null) {
+                this.rotateToPos(pos);
+                BlockUtil.placeCrystalOnBlock(this.placePos, this.offHand ? EnumHand.OFF_HAND : EnumHand.MAIN_HAND, this.placeSwing.getValue(), this.exactHand.getValue());
             }
         }
     }
@@ -1463,39 +1462,40 @@ class AutoCrystal
         }
 
         @Override
-        public
-        void run ( ) {
-            if ( this.autoCrystal.threadMode.getValue ( ) == ThreadMode.WHILE ) {
-                while ( this.autoCrystal.isOn ( ) && this.autoCrystal.threadMode.getValue ( ) == ThreadMode.WHILE ) {
-                    while ( Agalar.eventManager.ticksOngoing ( ) ) {
+        public void run() {
+            if (this.autoCrystal.threadMode.getValue() == ThreadMode.WHILE) {
+                while (this.autoCrystal.isOn() && this.autoCrystal.threadMode.getValue() == ThreadMode.WHILE) {
+                    while (Agalar.eventManager.ticksOngoing()) {
                     }
-                    if ( this.autoCrystal.shouldInterrupt.get ( ) ) {
-                        this.autoCrystal.shouldInterrupt.set ( false );
-                        this.autoCrystal.syncroTimer.reset ( );
-                        this.autoCrystal.thread.interrupt ( );
+                    if (this.autoCrystal.shouldInterrupt.get()) {
+                        this.autoCrystal.shouldInterrupt.set(false);
+                        this.autoCrystal.syncroTimer.reset();
+                        this.autoCrystal.thread.interrupt();
                         break;
                     }
-                    this.autoCrystal.threadOngoing.set ( true );
-                    Agalar.safetyManager.doSafetyCheck ( );
-                    this.autoCrystal.doAutoCrystal ( );
-                    this.autoCrystal.threadOngoing.set ( false );
+                    this.autoCrystal.threadOngoing.set(true);
+                    Agalar.safetyManager.doSafetyCheck();
+                    this.autoCrystal.doAutoCrystal();
+                    this.autoCrystal.threadOngoing.set(false);
                     try {
-                        Thread.sleep ( this.autoCrystal.threadDelay.getValue ( ) );
-                    } catch ( InterruptedException e ) {
-                        this.autoCrystal.thread.interrupt ( );
-                        e.printStackTrace ( );
+                        Thread.sleep(this.autoCrystal.threadDelay.getValue().intValue());
+                    } catch (InterruptedException e) {
+                        this.autoCrystal.thread.interrupt();
+                        e.printStackTrace();
                     }
                 }
-            } else if ( this.autoCrystal.threadMode.getValue ( ) != ThreadMode.NONE && this.autoCrystal.isOn ( ) ) {
-                while ( Agalar.eventManager.ticksOngoing ( ) ) {
+            } else if (this.autoCrystal.threadMode.getValue() != ThreadMode.NONE && this.autoCrystal.isOn()) {
+                while (Agalar.eventManager.ticksOngoing()) {
                 }
-                this.autoCrystal.threadOngoing.set ( true );
-                Agalar.safetyManager.doSafetyCheck ( );
-                this.autoCrystal.doAutoCrystal ( );
-                this.autoCrystal.threadOngoing.set ( false );
+                this.autoCrystal.threadOngoing.set(true);
+                Agalar.safetyManager.doSafetyCheck();
+                this.autoCrystal.doAutoCrystal();
+                this.autoCrystal.threadOngoing.set(false);
             }
         }
     }
+
+
 
     private
     class RenderPos {

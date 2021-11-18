@@ -36,6 +36,7 @@ class NoSlowDown
     public Setting < Boolean > sneakPacket = this.register ( new Setting <> ( "SneakPacket" , false ) );
     public Setting < Boolean > endPortal = this.register ( new Setting <> ( "EndPortal" , false ) );
     public Setting < Boolean > webs = this.register ( new Setting <> ( "Webs" , false ) );
+    public Setting < Boolean > superStrict = this.register (new Setting <> ( "2bstrict" , false));
     private boolean sneaking;
 
     public
@@ -92,6 +93,7 @@ class NoSlowDown
         if ( ( item instanceof ItemFood || item instanceof ItemBow || item instanceof ItemPotion && this.sneakPacket.getValue ( ) ) && ! this.sneaking ) {
             NoSlowDown.mc.player.connection.sendPacket ( new CPacketEntityAction ( NoSlowDown.mc.player , CPacketEntityAction.Action.START_SNEAKING ) );
             this.sneaking = true;
+
         }
     }
 

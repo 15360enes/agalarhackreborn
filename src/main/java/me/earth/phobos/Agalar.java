@@ -4,8 +4,7 @@ import me.earth.phobos.features.gui.custom.GuiCustomMainScreen;
 import me.earth.phobos.features.modules.client.PhobosChat;
 import me.earth.phobos.features.modules.misc.RPC;
 import me.earth.phobos.manager.*;
-import me.earth.phobos.util.Tracker;
-import me.earth.phobos.util.TrackerID;
+import net.minecraft.client.Minecraft;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
@@ -21,10 +20,10 @@ class Agalar {
     public static final String MODID = "AgalarClient";
     public static final String MODNAME = "AgalarClient";
     public static final String MODVER = "3.1.0";
-    public static final String NAME_UNICODE = "ᴀɢᴀʟᴀʀ ᴄʟɪᴇɴᴛ";
-    public static final String PHOBOS_UNICODE = "ᴀɢᴀʟᴀʀ ᴄʟɪᴇɴᴛ";
-    public static final String CHAT_SUFFIX = " \u23d0 ᴀɢᴀʟᴀʀ ᴄʟɪᴇɴᴛ";
-    public static final String PHOBOS_SUFFIX = " \u23d0 \u1d18\u029c\u1d0f\u0299\u1d0f\ua731";
+    public static final String NAME_UNICODE = " ᴀɢᴀʟᴀʀ ᴄʟɪᴇɴᴛ";
+    public static final String PHOBOS_UNICODE = " ᴀɢᴀʟᴀʀ ᴄʟɪᴇɴᴛ";
+    public static final String CHAT_SUFFIX = " ᴀɢᴀʟᴀʀ ᴄʟɪᴇɴᴛ";
+    public static final String PHOBOS_SUFFIX = " ᴀɢᴀʟᴀʀ ᴄʟɪᴇɴᴛ";
     public static final Logger LOGGER = LogManager.getLogger ( "Agalar" );
     public static ModuleManager moduleManager;
     public static SpeedManager speedManager;
@@ -58,7 +57,7 @@ class Agalar {
     static {
         unloaded = false;
     }
-
+    public Minecraft mc = Minecraft.getMinecraft();
     public static
     void load ( ) {
         LOGGER.info ( "\n\nLoading AgalarClient 3.1.0" );

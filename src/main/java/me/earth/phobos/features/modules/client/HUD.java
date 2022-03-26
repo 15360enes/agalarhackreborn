@@ -250,7 +250,7 @@ class HUD
         int k = this.renderingUp.getValue ( ) ? ( ( HUD.mc.currentScreen instanceof GuiChat ) ? 0 : 0 ) : 0;
         if ( this.renderingUp.getValue ( ) ) {
             if ( this.serverBrand.getValue ( ) ) {
-                final String text2 = grayString + "Server brand " + "\u00A7f" + Agalar.serverManager.getServerBrand ( );
+                final String text2 = grayString + "Server brand: " + "\u00A7f" + Agalar.serverManager.getServerBrand ( );
                 final TextManager renderer2 = this.renderer;
                 final float x2 = (float) ( width - ( this.renderer.getStringWidth ( text2 ) + 2 ) );
                 final int n2 = height - 2;
@@ -268,7 +268,7 @@ class HUD
                 }
             }
             if ( this.speed.getValue ( ) ) {
-                final String text2 = grayString + "Speed " + "\u00A7f" + Agalar.speedManager.getSpeedKpH ( ) + " km/h";
+                final String text2 = grayString + "Speed: " + "\u00A7f" + Agalar.speedManager.getSpeedKpH ( ) + " km/h";
                 final TextManager renderer4 = this.renderer;
                 final float x4 = (float) ( width - ( this.renderer.getStringWidth ( text2 ) + 2 ) );
                 final int n4 = height - 2;
@@ -276,7 +276,7 @@ class HUD
                 renderer4.drawString ( text2 , x4 , (float) ( n4 - k ) , ( this.rolling.getValue ( ) && this.rainbow.getValue ( ) ) ? this.colorMap.get ( height - k ) : this.color , true );
             }
             if ( this.time.getValue ( ) ) {
-                final String text2 = grayString + "Time " + "\u00A7f" + new SimpleDateFormat ( "h:mm a" ).format ( new Date ( ) );
+                final String text2 = grayString + "Time: " + "\u00A7f" + new SimpleDateFormat ( "h:mm a" ).format ( new Date ( ) );
                 final TextManager renderer5 = this.renderer;
                 final float x5 = (float) ( width - ( this.renderer.getStringWidth ( text2 ) + 2 ) );
                 final int n5 = height - 2;
@@ -286,7 +286,7 @@ class HUD
             if ( this.durability.getValue ( ) ) {
                 final int itemDamage = HUD.mc.player.getHeldItemMainhand ( ).getMaxDamage ( ) - HUD.mc.player.getHeldItemMainhand ( ).getItemDamage ( );
                 if ( itemDamage > 0 ) {
-                    final String text = grayString + "Durability " + "\u00A7a" + itemDamage;
+                    final String text = grayString + "Durability: " + "\u00A7a" + itemDamage;
                     final TextManager renderer6 = this.renderer;
                     final float x6 = (float) ( width - ( this.renderer.getStringWidth ( text ) + 2 ) );
                     final int n6 = height - 2;
@@ -295,15 +295,15 @@ class HUD
                 }
             }
             if ( this.tps.getValue ( ) ) {
-                final String text2 = grayString + "TPS " + "\u00A7f" + Agalar.serverManager.getTPS ( );
+                final String text2 = grayString + "TPS: " + "\u00A7f" + Agalar.serverManager.getTPS ( );
                 final TextManager renderer7 = this.renderer;
                 final float x7 = (float) ( width - ( this.renderer.getStringWidth ( text2 ) + 2 ) );
                 final int n7 = height - 2;
                 k += 10;
                 renderer7.drawString ( text2 , x7 , (float) ( n7 - k ) , ( this.rolling.getValue ( ) && this.rainbow.getValue ( ) ) ? this.colorMap.get ( height - k ) : this.color , true );
             }
-            final String fpsText = grayString + "FPS " + "\u00A7f" + Minecraft.debugFPS;
-            final String text = grayString + "Ping " + "\u00A7f" + ( PingBypass.getInstance ( ).isConnected ( ) ? PingBypass.getInstance ( ).getServerPing ( ) : Agalar.serverManager.getPing ( ) ) + ( this.MS.getValue ( ) ? "ms" : "" );
+            final String fpsText = grayString + "FPS: " + "\u00A7f" + Minecraft.debugFPS;
+            final String text = grayString + "Ping: " + "\u00A7f" + ( PingBypass.getInstance ( ).isConnected ( ) ? PingBypass.getInstance ( ).getServerPing ( ) : Agalar.serverManager.getPing ( ) ) + ( this.MS.getValue ( ) ? "ms" : "" );
             if ( this.renderer.getStringWidth ( text ) > this.renderer.getStringWidth ( fpsText ) ) {
                 if ( this.ping.getValue ( ) ) {
                     final TextManager renderer8 = this.renderer;
@@ -337,7 +337,7 @@ class HUD
             }
         } else {
             if ( this.serverBrand.getValue ( ) ) {
-                final String text2 = grayString + "Server brand " + "\u00A7f" + Agalar.serverManager.getServerBrand ( );
+                final String text2 = grayString + "Server brand: " + "\u00A7f" + Agalar.serverManager.getServerBrand ( );
                 this.renderer.drawString ( text2 , (float) ( width - ( this.renderer.getStringWidth ( text2 ) + 2 ) ) , (float) ( 2 ) , ( this.rolling.getValue ( ) && this.rainbow.getValue ( ) ) ? this.colorMap.get ( 2 ) : this.color , true );
             }
             if ( this.potions.getValue ( ) ) {
@@ -347,26 +347,26 @@ class HUD
                 }
             }
             if ( this.speed.getValue ( ) ) {
-                final String text2 = grayString + "Speed " + "\u00A7f" + Agalar.speedManager.getSpeedKpH ( ) + " km/h";
+                final String text2 = grayString + "Speed: " + "\u00A7f" + Agalar.speedManager.getSpeedKpH ( ) + " km/h";
                 this.renderer.drawString ( text2 , (float) ( width - ( this.renderer.getStringWidth ( text2 ) + 2 ) ) , (float) ( 2 + k++ * 10 ) , ( this.rolling.getValue ( ) && this.rainbow.getValue ( ) ) ? this.colorMap.get ( 2 + k * 10 ) : this.color , true );
             }
             if ( this.time.getValue ( ) ) {
-                final String text2 = grayString + "Time " + "\u00A7f" + new SimpleDateFormat ( "h:mm a" ).format ( new Date ( ) );
+                final String text2 = grayString + "Time: " + "\u00A7f" + new SimpleDateFormat ( "h:mm a" ).format ( new Date ( ) );
                 this.renderer.drawString ( text2 , (float) ( width - ( this.renderer.getStringWidth ( text2 ) + 2 ) ) , (float) ( 2 + k++ * 10 ) , ( this.rolling.getValue ( ) && this.rainbow.getValue ( ) ) ? this.colorMap.get ( 2 + k * 10 ) : this.color , true );
             }
             if ( this.durability.getValue ( ) ) {
                 final int itemDamage = HUD.mc.player.getHeldItemMainhand ( ).getMaxDamage ( ) - HUD.mc.player.getHeldItemMainhand ( ).getItemDamage ( );
                 if ( itemDamage > 0 ) {
-                    final String text = grayString + "Durability " + "\u00A7a" + itemDamage;
+                    final String text = grayString + "Durability: " + "\u00A7a" + itemDamage;
                     this.renderer.drawString ( text , (float) ( width - ( this.renderer.getStringWidth ( text ) + 2 ) ) , (float) ( 2 + k++ * 10 ) , ( this.rolling.getValue ( ) && this.rainbow.getValue ( ) ) ? this.colorMap.get ( 2 + k * 10 ) : this.color , true );
                 }
             }
             if ( this.tps.getValue ( ) ) {
-                final String text2 = grayString + "TPS " + "\u00A7f" + Agalar.serverManager.getTPS ( );
+                final String text2 = grayString + "TPS: " + "\u00A7f" + Agalar.serverManager.getTPS ( );
                 this.renderer.drawString ( text2 , (float) ( width - ( this.renderer.getStringWidth ( text2 ) + 2 ) ) , (float) ( 2 + k++ * 10 ) , ( this.rolling.getValue ( ) && this.rainbow.getValue ( ) ) ? this.colorMap.get ( 2 + k * 10 ) : this.color , true );
             }
-            final String fpsText = grayString + "FPS " + "\u00A7f" + Minecraft.debugFPS;
-            final String text = grayString + "Ping " + "\u00A7f" + Agalar.serverManager.getPing ( );
+            final String fpsText = grayString + "FPS: " + "\u00A7f" + Minecraft.debugFPS;
+            final String text = grayString + "Ping: " + "\u00A7f" + Agalar.serverManager.getPing ( );
             if ( this.renderer.getStringWidth ( text ) > this.renderer.getStringWidth ( fpsText ) ) {
                 if ( this.ping.getValue ( ) ) {
                     this.renderer.drawString ( text , (float) ( width - ( this.renderer.getStringWidth ( text ) + 2 ) ) , (float) ( 2 + k++ * 10 ) , ( this.rolling.getValue ( ) && this.rainbow.getValue ( ) ) ? this.colorMap.get ( 2 + k * 10 ) : this.color , true );

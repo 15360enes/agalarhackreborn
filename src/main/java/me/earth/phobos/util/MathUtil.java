@@ -163,15 +163,15 @@ class MathUtil
         Calendar c = Calendar.getInstance ( );
         int timeOfDay = c.get ( 11 );
         if ( timeOfDay < 12 ) {
-            return "Good Morning ";
+            return "Gunaydın Canim ";
         }
         if ( timeOfDay < 16 ) {
-            return "Good Afternoon ";
+            return "Iyi gunler cicim ";
         }
         if ( timeOfDay < 21 ) {
-            return "Good Evening ";
+            return "Iyi aksamlar balım ";
         }
-        return "Good Night ";
+        return "Iyi geceler askim ";
     }
 
     public static

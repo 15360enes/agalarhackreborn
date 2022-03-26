@@ -16,7 +16,7 @@ class Logger
         extends Module {
     public Setting < Packets > packets = this.register ( new Setting <> ( "Packets" , Packets.OUTGOING ) );
     public Setting < Boolean > chat = this.register ( new Setting <> ( "Chat" , false ) );
-    public Setting < Boolean > fullInfo = this.register ( new Setting <> ( "FullInfo" , false ) );
+    public Setting < Boolean > fullInfo = this.register ( new Setting <> ( "FullInfo" ,false ) );
     public Setting < Boolean > noPing = this.register ( new Setting <> ( "NoPing" , false ) );
 
     public

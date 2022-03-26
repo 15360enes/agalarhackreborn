@@ -95,8 +95,8 @@ public class PopChams extends Module {
                 return;
             }
             GL11.glLineWidth(1.0f);
-            Color lineColorS = new Color(RED_LINE.getValue(), BLUE_LINE.getValue(), GREEN_LINE.getValue(), ALPHA_LINE.getValue());
-            Color fillColorS = new Color(RED_FILL.getValue(), BLUE_FILL.getValue(), GREEN_FILL.getValue(), ALPHA_FILL.getValue());
+            Color lineColorS = this.colorsync.getValue() ?  Colors.INSTANCE.getCurrentColor() :  new Color(RED_LINE.getValue(), BLUE_LINE.getValue(), GREEN_LINE.getValue(), ALPHA_LINE.getValue());
+            Color fillColorS = this.colorsync.getValue() ?  Colors.INSTANCE.getCurrentColor() :  new Color(RED_FILL.getValue(), BLUE_FILL.getValue(), GREEN_FILL.getValue(), ALPHA_FILL.getValue());
             int lineA = lineColorS.getAlpha();
             int fillA = (fillColorS).getAlpha();
             final long time = System.currentTimeMillis() - this.startTime - ((Number) fadestart.getValue()).longValue();

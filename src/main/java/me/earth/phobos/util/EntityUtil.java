@@ -3,6 +3,7 @@ package me.earth.phobos.util;
 import me.earth.phobos.Agalar;
 import me.earth.phobos.features.modules.client.Management;
 import me.earth.phobos.features.modules.combat.Killaura;
+import me.earth.phobos.features.modules.misc.GhastTweaks;
 import me.earth.phobos.features.modules.player.Blink;
 import me.earth.phobos.features.modules.player.FakePlayer;
 import me.earth.phobos.features.modules.player.Freecam;
@@ -18,6 +19,7 @@ import net.minecraft.entity.item.EntityBoat;
 import net.minecraft.entity.item.EntityEnderCrystal;
 import net.minecraft.entity.item.EntityMinecart;
 import net.minecraft.entity.monster.EntityEnderman;
+import net.minecraft.entity.monster.EntityGhast;
 import net.minecraft.entity.monster.EntityIronGolem;
 import net.minecraft.entity.monster.EntityPigZombie;
 import net.minecraft.entity.passive.EntityAmbientCreature;
@@ -208,6 +210,9 @@ class EntityUtil implements Util {
     public static
     boolean isHostileMob ( final Entity entity ) {
         return entity.isCreatureType ( EnumCreatureType.MONSTER , false ) && ! isNeutralMob ( entity );
+    }
+    public static boolean isGhast (final Entity entity){
+        return entity instanceof EntityGhast;
     }
 
     public static

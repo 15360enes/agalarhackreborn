@@ -42,6 +42,7 @@ class Killaura
     public Setting < Boolean > animals = this.register ( new Setting <> ( "Animals" , false ) );
     public Setting < Boolean > vehicles = this.register ( new Setting <> ( "Entities" , false ) );
     public Setting < Boolean > projectiles = this.register ( new Setting <> ( "Projectiles" , false ) );
+    public Setting <Boolean> Ghast = this.register (new Setting <> ("Ghast" , false));
     public Setting < Boolean > tps = this.register ( new Setting <> ( "TpsSync" , true ) );
     public Setting < Boolean > packet = this.register ( new Setting <> ( "Packet" , false ) );
     public Setting < Boolean > swing = this.register ( new Setting <> ( "Swing" , true ) );
@@ -167,7 +168,7 @@ class Killaura
         double distance = this.teleport.getValue ( ) ? (double) this.teleportRange.getValue ( ) : (double) this.range.getValue ( );
         double maxHealth = 36.0;
         for (Entity entity : Killaura.mc.world.loadedEntityList) {
-            if ( ! ( this.players.getValue ( ) && entity instanceof EntityPlayer || this.animals.getValue ( ) && EntityUtil.isPassive ( entity ) || this.mobs.getValue ( ) && EntityUtil.isMobAggressive ( entity ) || this.vehicles.getValue ( ) && EntityUtil.isVehicle ( entity ) ) && ( ! this.projectiles.getValue ( ) || ! EntityUtil.isProjectile ( entity ) ) || entity instanceof EntityLivingBase && EntityUtil.isntValid ( entity , distance ) || ! this.teleport.getValue ( ) && ! Killaura.mc.player.canEntityBeSeen ( entity ) && ! EntityUtil.canEntityFeetBeSeen ( entity ) && Killaura.mc.player.getDistanceSq ( entity ) > MathUtil.square ( this.raytrace.getValue ( ) ) )
+            if ( ! ( this.players.getValue ( ) && entity instanceof EntityPlayer || this.animals.getValue ( ) && EntityUtil.isPassive ( entity ) || this.mobs.getValue ( ) && EntityUtil.isMobAggressive ( entity ) || this.Ghast.getValue() && EntityUtil.isGhast(entity)  || this.vehicles.getValue ( ) && EntityUtil.isVehicle ( entity ) ) && ( ! this.projectiles.getValue ( ) || ! EntityUtil.isProjectile ( entity ) ) ||  entity instanceof EntityLivingBase && EntityUtil.isntValid ( entity , distance ) || ! this.teleport.getValue ( ) && ! Killaura.mc.player.canEntityBeSeen ( entity ) && ! EntityUtil.canEntityFeetBeSeen ( entity ) && Killaura.mc.player.getDistanceSq ( entity ) > MathUtil.square ( this.raytrace.getValue ( ) ) )
                 continue;
             if ( target == null ) {
                 target = entity;

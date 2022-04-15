@@ -79,7 +79,7 @@ class ModuleManager
         this.modules.add ( new Godmode ( ) );
         this.modules.add ( new Companion ( ) );
         this.modules.add ( new EntityControl ( ) );
-        this.modules.add ( new GhastNotifier ( ) );
+        this.modules.add ( new GhastTweaks ( ) );
         this.modules.add ( new ReverseStep ( ) );
         this.modules.add ( new Bypass ( ) );
         this.modules.add ( new Strafe ( ) );
@@ -190,6 +190,7 @@ class ModuleManager
         this.modules.add ( new AutoMinecart ( ) );
         this.modules.add ( new Rubberband ( ) );
         this.modules.add ( new PackReload ( ) );
+        this.modules.add (new GhastFarmer());
         this.modules.add ( new NoEntityTrace ( ) );
         this.modules.add ( new PacketMend ( ) );
         this.modules.add ( new Flatten ( ) );
@@ -246,7 +247,7 @@ class ModuleManager
         this.moduleColorMap.put ( this.getModuleByClass ( ToolTips.class ) , new Color ( 209 , 125 , 156 ) );
         this.moduleColorMap.put ( this.getModuleByClass ( Translator.class ) , new Color ( 74 , 82 , 15 ) );
         this.moduleColorMap.put ( this.getModuleByClass ( Tracker.class ) , new Color ( 0 , 255 , 225 ) );
-        this.moduleColorMap.put ( this.getModuleByClass ( GhastNotifier.class ) , new Color ( 200 , 200 , 220 ) );
+        this.moduleColorMap.put ( this.getModuleByClass ( GhastTweaks.class ) , new Color ( 200 , 200 , 220 ) );
         this.moduleColorMap.put ( this.getModuleByClass ( ArrowESP.class ) , new Color ( 193 , 219 , 20 ) );
         this.moduleColorMap.put ( this.getModuleByClass ( BlockHighlight.class ) , new Color ( 103 , 182 , 224 ) );
         this.moduleColorMap.put ( this.getModuleByClass ( CameraClip.class ) , new Color ( 247 , 169 , 107 ) );

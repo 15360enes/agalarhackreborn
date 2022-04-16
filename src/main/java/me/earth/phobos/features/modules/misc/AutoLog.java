@@ -59,7 +59,8 @@ class AutoLog
             Agalar.moduleManager.disableModule ( "AutoReconnect" );
             AutoLog.mc.player.connection.sendPacket ( new SPacketDisconnect ( new TextComponentString ( "AutoLogged" ) ) );
             if ( this.logout.getValue ( ) ) {
-                this.disable ( );
+                this.disable();
+                Agalar.moduleManager.disableModule("Autolog");
             }
         }
     }

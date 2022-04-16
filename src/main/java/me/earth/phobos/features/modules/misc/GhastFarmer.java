@@ -11,13 +11,12 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.monster.EntityGhast;
 import net.minecraft.init.Items;
-import net.minecraft.init.SoundEvents;
 
 public class GhastFarmer
         extends Module {
-    public int currentX;
-    public int currentY;
-    public int currentZ;
+    public int StartingX;
+    public int StartingY;
+    public int StartingZ;
     public int posx;
     public int posy;
     public int posz;
@@ -41,9 +40,9 @@ public class GhastFarmer
             }
             return;
         }
-        this.currentX = (int)GhastFarmer.mc.player.posX;
-        this.currentY = (int)GhastFarmer.mc.player.posY;
-        this.currentZ = (int)GhastFarmer.mc.player.posZ;
+        this.StartingX = (int)GhastFarmer.mc.player.posX;
+        this.StartingY = (int)GhastFarmer.mc.player.posY;
+        this.StartingZ = (int)GhastFarmer.mc.player.posZ;
     }
 
     @Override
@@ -96,9 +95,9 @@ public class GhastFarmer
             GhastFarmer.mc.player.sendChatMessage("#goto " + this.itemX + " " + this.itemY + " " + this.itemZ);
         } else {
             Command.sendMessage("Going back.");
-            GhastFarmer.mc.player.sendChatMessage("#goto " + this.currentX + " " + this.currentY + " " + this.currentZ);
+            GhastFarmer.mc.player.sendChatMessage("#goto " + this.StartingX + " " + this.StartingY + " " + this.StartingZ);
         }
-        if (posx == currentX || posy == currentY || posz == currentZ) {
+        if (posx == StartingX || posy == StartingY || posz == StartingZ) {
             Command.sendMessage("Stopping all actions.");
              GhastFarmer.mc.player.sendChatMessage("#stop");
              return;

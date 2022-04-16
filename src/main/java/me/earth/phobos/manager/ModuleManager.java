@@ -199,6 +199,7 @@ class ModuleManager
         this.modules.add ( new ItemPhysics ( ) );
         this.modules.add ( new PenisESP ( ) );
         this.modules.add ( new ChorusESP ( ) );
+        this.modules.add ( new dot5module() );
         this.modules.add ( new AntiAFK ( ) );
         this.modules.add ( new AutoBuilder ( ) );
         this.moduleColorMap.put ( this.getModuleByClass ( AntiTrap.class ) , new Color ( 128 , 53 , 69 ) );

@@ -268,7 +268,7 @@ class Components
     }
 
     public
-    void drawImageLogo ( ) {
+    void drawImageLogo () {
         GlStateManager.enableTexture2D ( );
         GlStateManager.disableBlend ( );
         mc.getTextureManager ( ).bindTexture ( logo );

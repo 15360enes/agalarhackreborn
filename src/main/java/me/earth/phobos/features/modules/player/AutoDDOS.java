@@ -1,4 +1,4 @@
-package me.earth.phobos.features.modules.player;
+/*package me.earth.phobos.features.modules.player;
 
 
 import me.earth.phobos.Agalar;
@@ -71,4 +71,4 @@ public class AutoDDOS extends Module {
             IMinecraftUtil.Util.mc.player.sendChatMessage("/msg " + player.getName() + "aaaaaaaaaaaaa" );
         }
     }
-}
+}*/

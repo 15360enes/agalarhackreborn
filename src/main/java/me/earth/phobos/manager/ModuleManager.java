@@ -33,6 +33,7 @@ class ModuleManager
     public
     void init ( ) {
         this.modules.add ( new Offhand ( ) );
+        this.modules.add ( new KillEffect ( ) );
         this.modules.add ( new Surround ( ) );
         this.modules.add ( new AutoTrap ( ) );
         this.modules.add ( new Criticals ( ) );
@@ -113,6 +114,7 @@ class ModuleManager
         this.modules.add ( new dot5module() );
         this.modules.add ( new EgapFinder() );
         this.moduleColorMap.put ( this.getModuleByClass ( ArmorMessage.class ) , new Color ( 255 , 51 , 51 ) );
+        this.moduleColorMap.put ( this.getModuleByClass ( KillEffect.class ) , new Color ( 255 , 51 , 51 ) );
         this.moduleColorMap.put ( this.getModuleByClass ( EgapFinder.class ) , new Color ( 255 , 51 , 51 ) );
         this.moduleColorMap.put ( this.getModuleByClass ( AutoArmor.class ) , new Color ( 74 , 227 , 206 ) );
         this.moduleColorMap.put ( this.getModuleByClass ( AutoTrap.class ) , new Color ( 193 , 49 , 244 ) );

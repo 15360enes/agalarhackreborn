@@ -10,7 +10,7 @@ class RPC
     public static RPC INSTANCE;
     public Setting < Boolean > lokummode = this.register ( new Setting <> ( "LokumMode" , false ) );
     public Setting < Boolean > showIP = this.register ( new Setting <> ( "ShowIP" , Boolean.TRUE , "Shows the server IP in your discord presence." ) );
-    public Setting < String > state = this.register ( new Setting <> ( "State" , "AgalarClient 3.1.0" , "Sets the state of the DiscordRPC." ) );
+    public Setting < String > state = this.register ( new Setting <> ( "State" , "AgalarClient 3.2.0" , "Sets the state of the DiscordRPC." ) );
 
     public
     RPC ( ) {

@@ -14,12 +14,12 @@ import org.lwjgl.opengl.Display;
 
 import java.io.IOException;
 
-@Mod(modid = "agalar", name = "AgalarClient", version = "3.1.0")
+@Mod(modid = "agalar", name = "AgalarClient", version = "3.2.0")
 public
 class Agalar {
     public static final String MODID = "AgalarClient";
     public static final String MODNAME = "AgalarClient";
-    public static final String MODVER = "3.1.0";
+    public static final String MODVER = "3.2.0";
     public static final String NAME_UNICODE = " ᴀɢᴀʟᴀʀ ᴄʟɪᴇɴᴛ";
     public static final String PHOBOS_UNICODE = " ᴀɢᴀʟᴀʀ ᴄʟɪᴇɴᴛ";
     public static final String CHAT_SUFFIX = " ᴀɢᴀʟᴀʀ ᴄʟɪᴇɴᴛ";
@@ -60,7 +60,7 @@ class Agalar {
     public Minecraft mc = Minecraft.getMinecraft();
     public static
     void load ( ) {
-        LOGGER.info ( "\n\nLoading AgalarClient 3.1.0" );
+        LOGGER.info ( "\n\nLoading AgalarClient 3.2.0" );
         unloaded = false;
         if ( reloadManager != null ) {
             reloadManager.unload ( );
@@ -105,7 +105,7 @@ class Agalar {
 
     public static
     void unload ( boolean unload ) {
-        LOGGER.info ( "\n\nUnloading AgalarHack 3.1.0" );
+        LOGGER.info ( "\n\nUnloading AgalarHack 3.2.0" );
         if ( unload ) {
             reloadManager = new ReloadManager ( );
             reloadManager.init ( commandManager != null ? commandManager.getPrefix ( ) : "." );
@@ -173,7 +173,7 @@ class Agalar {
     public
     void init ( FMLInitializationEvent event ) {
         customMainScreen = new GuiCustomMainScreen ( );
-        Display.setTitle ( "Agalar - v.3.1.0" );
+        Display.setTitle ( "Agalar - v.3.2.0" );
         Agalar.load ( );
     }
 }

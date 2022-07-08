@@ -3,14 +3,14 @@
     "modid": "AgalarClient",
     "name": "AgalarClient",
     "description": "Lokam skid gl code i guess (sometimes)",
-    "version": "3.1.0",
+    "version": "3.2.0",
     "mcversion": "1.12.2",
 	"logoFile": "phobos.png",
     "url": "https://discord.gg/dCTQvssrSW",
     "updateUrl": "https://discord.gg/dCTQvssrSW",
     "authorList": [
       "Lokumisadog",
-      "GL_DONT_CARE"
+      "vhakanEU"
     ],
     "screenshots": [],
     "dependencies": []

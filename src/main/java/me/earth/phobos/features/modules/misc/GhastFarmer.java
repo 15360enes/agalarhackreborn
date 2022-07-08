@@ -97,11 +97,6 @@ public class GhastFarmer
             Command.sendMessage("Going back.");
             GhastFarmer.mc.player.sendChatMessage("#goto " + this.StartingX + " " + this.StartingY + " " + this.StartingZ);
         }
-        if (posx == StartingX || posy == StartingY || posz == StartingZ) {
-            Command.sendMessage("Stopping all actions.");
-             GhastFarmer.mc.player.sendChatMessage("#stop");
-             return;
-        }
     }
 
     public static boolean lambda$onUpdate$2(EntityItem entityItem) {

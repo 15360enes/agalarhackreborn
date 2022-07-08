@@ -90,7 +90,6 @@ class ModuleManager
         this.modules.add ( new Colors ( ) );
         this.modules.add ( new PingBypass ( ) );
         this.modules.add ( new Screens ( ) );
-        this.modules.add ( new AutoDDOS ( ) );
         this.modules.add ( new Media ( ) );
         this.modules.add ( new PhobosChat ( ) );
         this.modules.add ( new PhysicsCapes ( ) );

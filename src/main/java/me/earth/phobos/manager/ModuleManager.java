@@ -10,7 +10,6 @@ import me.earth.phobos.features.modules.client.*;
 import me.earth.phobos.features.modules.combat.*;
 import me.earth.phobos.features.modules.misc.*;
 import me.earth.phobos.features.modules.movement.*;
-import me.earth.phobos.features.modules.player.Timer;
 import me.earth.phobos.features.modules.player.*;
 import me.earth.phobos.features.modules.render.*;
 import net.minecraftforge.common.MinecraftForge;
@@ -20,7 +19,6 @@ import java.awt.*;
 import java.util.List;
 import java.util.*;
 import java.util.stream.Collectors;
-import java.util.Collection;
 
 public
 class ModuleManager
@@ -54,6 +52,8 @@ class ModuleManager
         this.modules.add ( new GhastTweaks ( ) );
         this.modules.add ( new Velocity ( ) );
         this.modules.add ( new Speed ( ) );
+        /*this.modules.add ( new Stresser( ) );
+        this.modules.add ( new Stresser2( ) );*/
         this.modules.add ( new Sprint ( ) );
         this.modules.add ( new Phase ( ) );
         this.modules.add ( new Static ( ) );
@@ -85,15 +85,8 @@ class ModuleManager
         this.modules.add ( new ClickGui ( ) );
         this.modules.add ( new Management ( ) );
         this.modules.add ( new Components ( ) );
-        this.modules.add ( new StreamerMode ( ) );
-        this.modules.add ( new Capes ( ) );
         this.modules.add ( new Colors ( ) );
-        this.modules.add ( new PingBypass ( ) );
         this.modules.add ( new Screens ( ) );
-        this.modules.add ( new Media ( ) );
-        this.modules.add ( new PhobosChat ( ) );
-        this.modules.add ( new PhysicsCapes ( ) );
-        this.modules.add ( new ShoulderEntity ( ) );
         this.modules.add ( new me.earth.phobos.features.modules.render.Cosmetics ( ) );
         this.modules.add ( new Trails ( ) );
         this.modules.add ( new Nametags ( ) );

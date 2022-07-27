@@ -88,13 +88,13 @@ public class GhastFarmer
         posy = (int) mc.player.posY;
         posz = (int) mc.player.posZ;
         if (ghastEnt != null) {
-            Command.sendMessage("Killing ghast.");
+            Command.sendMessage("Ghast kesiyom.");
             GhastFarmer.mc.player.sendChatMessage("#goto " + this.ghastX + " " + this.ghastY + " " + this.ghastZ);
         } else if (itemEnt != null) {
-            Command.sendMessage("Collecting items.");
+            Command.sendMessage("Esyalari aliyom.");
             GhastFarmer.mc.player.sendChatMessage("#goto " + this.itemX + " " + this.itemY + " " + this.itemZ);
         } else {
-            Command.sendMessage("Going back.");
+            Command.sendMessage("Geri donuyom.");
             GhastFarmer.mc.player.sendChatMessage("#goto " + this.StartingX + " " + this.StartingY + " " + this.StartingZ);
         }
     }

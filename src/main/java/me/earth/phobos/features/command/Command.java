@@ -85,6 +85,8 @@ class Command
         return this.commands;
     }
 
+
+
     public static
     class ChatMessage
             extends TextComponentBase {

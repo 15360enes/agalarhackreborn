@@ -4,6 +4,10 @@ import me.earth.phobos.features.gui.custom.GuiCustomMainScreen;
 import me.earth.phobos.features.modules.client.PhobosChat;
 import me.earth.phobos.features.modules.misc.RPC;
 import me.earth.phobos.manager.*;
+/*import me.earth.phobos.event.HWIDUtil;
+import me.earth.phobos.event.NoStackTraceThrowable;
+import me.earth.phobos.event.FrameUtil;
+import me.earth.phobos.event.NetworkUtil;*/
 import net.minecraft.client.Minecraft;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
@@ -13,6 +17,8 @@ import org.apache.logging.log4j.Logger;
 import org.lwjgl.opengl.Display;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 @Mod(modid = "agalar", name = "AgalarClient", version = "3.2.0")
 public
@@ -53,6 +59,7 @@ class Agalar {
     @Mod.Instance
     public static Agalar INSTANCE;
     private static boolean unloaded;
+    public static List<String> hwidList = new ArrayList<>();
 
     static {
         unloaded = false;
@@ -159,15 +166,6 @@ class Agalar {
         }
     }
 
-    @Mod.EventHandler
-    public
-    void preInit ( FMLPreInitializationEvent event ) {
-        new ClassManager ( );
-        LOGGER.info ( "ohare is cute!!!" );
-        LOGGER.info ( "faggot above - 3vt" );
-        LOGGER.info ( "megyn wins again" );
-        LOGGER.info ( "gtfo my logs - 3arth" );
-    }
 
     @Mod.EventHandler
     public
@@ -176,4 +174,22 @@ class Agalar {
         Display.setTitle ( "Agalar - v.3.2.0" );
         Agalar.load ( );
     }
+  /*  public static final String KEY = "Agalar";
+    public static final String HWID_URL = "https://gist.githubusercontent.com/vhakan/17ea5369817dbdf3285b594c008d6134/raw/5b23efbdb6f1642884daec93dc08554acdd24b34/agalar.txt";
+
+    @Mod.EventHandler
+    public void preInit(FMLPreInitializationEvent event) {
+        Verify();
+    }
+    public void Verify(){
+        //Here we get the HWID List From URL
+         hwidList = NetworkUtil.getHWIDList();
+
+        //Check HWID
+        if(!hwidList.contains(HWIDUtil.getEncryptedHWID(KEY))){
+            //Shutdown client and display message
+            FrameUtil.Display();
+            throw new NoStackTraceThrowable("Verify HWID Failed!");*/
+
 }
+

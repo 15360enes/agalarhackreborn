@@ -213,12 +213,12 @@ class Module
 
     public
     enum Category {
-        COMBAT ( "Combat" ),
-        MISC ( "Misc" ),
-        RENDER ( "Render" ),
-        MOVEMENT ( "Movement" ),
-        PLAYER ( "Player" ),
-        CLIENT ( "Client" );
+        COMBAT ( "Saldiri" ),
+        MISC ( "Cesitli" ),
+        RENDER ( "Goruntu" ),
+        MOVEMENT ( "Haraket" ),
+        PLAYER ( "Oyuncu" ),
+        CLIENT ( "Hile" );
 
         private final String name;
 

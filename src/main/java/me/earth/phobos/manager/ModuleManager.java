@@ -75,6 +75,9 @@ class ModuleManager
         this.modules.add ( new Tracers ( ) );
         this.modules.add ( new LogoutSpots ( ) );
         this.modules.add ( new HandColor ( ) );
+        this.modules.add ( new HandModifier ( ) );
+        this.modules.add ( new CustomFog ( ) );
+        this.modules.add ( new AutoDDOS ( ) );
         this.modules.add ( new VoidESP ( ) );
         this.modules.add ( new Cosmetics ( ) );
         this.modules.add ( new CrystalModifier ( ) );

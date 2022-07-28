@@ -92,7 +92,6 @@ class HUD
     private boolean shouldIncrement;
     private int hitMarkerTimer;
 
-
     public
     HUD ( ) {
         super ( "HUD" , "HUD Elements rendered on your screen" , Module.Category.CLIENT , true , false , false );
